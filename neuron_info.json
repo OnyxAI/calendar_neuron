@@ -1,0 +1,12 @@
+{
+  "name": "Calendar",
+  "raw_name": "calendar",
+  "routes": [
+    {
+      "url": "/calendar",
+      "name": "Calendar",
+      "raw": "calendar",
+      "icon": "fa fa-calendar"
+    }
+  ]
+}
