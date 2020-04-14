@@ -1,6 +1,5 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
-import { API_URL } from '@onyx/global/constants';
-import request from '@onyx/utils/request';
+import { request } from 'onyx/utils';
 import moment from 'moment';
 import {
   GET_EVENTS,
@@ -33,7 +32,7 @@ export function* loadGetEvents() {
   try {
     const result = yield call(request, {
       method: 'GET',
-      url: `${API_URL}/neuron/calendar`,
+      url: `/api/neuron/calendar`,
       headers: { Authorization: `Bearer ${token}` },
     });
     if (result && result.status === 'success') {
@@ -57,7 +56,7 @@ export function* loadAddEvent() {
   try {
     const result = yield call(request, {
       method: 'POST',
-      url: `${API_URL}/neuron/calendar`,
+      url: `/api/neuron/calendar`,
       headers: { Authorization: `Bearer ${token}` },
       data: {
         title: calendar.title,
@@ -90,7 +89,7 @@ export function* loadUpdateDateEvent() {
   try {
     const result = yield call(request, {
       method: 'PUT',
-      url: `${API_URL}/neuron/calendar`,
+      url: `/api/neuron/calendar`,
       headers: { Authorization: `Bearer ${token}` },
       data: {
         id: calendar.id,
@@ -120,7 +119,7 @@ export function* loadUpdateEvent() {
   try {
     const result = yield call(request, {
       method: 'POST',
-      url: `${API_URL}/neuron/calendar/update`,
+      url: `/api/neuron/calendar/update`,
       headers: { Authorization: `Bearer ${token}` },
       data: {
         id: calendar.id,
@@ -152,7 +151,7 @@ export function* loadDeleteEvent() {
   try {
     const result = yield call(request, {
       method: 'PUT',
-      url: `${API_URL}/neuron/calendar/update`,
+      url: `/api/neuron/calendar/update`,
       headers: { Authorization: `Bearer ${token}` },
       data: {
         id: calendar.id,

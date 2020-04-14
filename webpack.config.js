@@ -1,15 +1,20 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const path = require('path');
 
 module.exports = {
-  mode: 'production',
-  entry: ['./index.js'],
-  optimization: {
-    minimize: false,
+  mode: 'development',
+  entry: ['./bootstrap.js'],
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    writeToDisk: true,
+    port: 3001,
   },
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'index.js',
-    libraryTarget: 'commonjs2',
+    publicPath: '/neurons/calendar/',
+  },
+  optimization: {
+    minimize: false,
   },
   module: {
     rules: [
@@ -17,6 +22,10 @@ module.exports = {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
+        options: {
+          presets: ['@babel/preset-react'],
+          plugins: ['@babel/plugin-proposal-class-properties'],
+        },
       },
       {
         // Preprocess our own .css files
@@ -98,17 +107,33 @@ module.exports = {
       },
     ],
   },
-  externals: {
-    react: 'commonjs react',
-  },
+  plugins: [
+    new ModuleFederationPlugin({
+      name: 'calendar',
+      library: { type: 'var', name: 'calendar' },
+      filename: 'remoteEntry.js',
+      exposes: {
+        Calendar: './index.js',
+      },
+      remotes: {
+        onyx: 'onyx',
+      },
+      shared: [
+        'react',
+        'react-dom',
+        'react-intl',
+        'react-redux',
+        'redux',
+        'reselect',
+        'react-materialize',
+        'materialize-css',
+      ],
+    }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
+  ],
   resolve: {
     extensions: ['.js', '.json'],
-    alias: {
-      '@onyx': path.resolve('../../src'),
-      react: path.resolve(__dirname, '../../node_modules/react/'),
-      "react-redux": path.resolve(__dirname, '../../node_modules/react-redux/'),
-      "react-router-dom": path.resolve(__dirname, '../../node_modules/react-router-dom/'),
-      "connected-react-router": path.resolve(__dirname, '../../node_modules/connected-react-router/'),
-    },
   },
 };

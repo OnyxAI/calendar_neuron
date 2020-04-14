@@ -1,5 +1,5 @@
 from neurons.calendar.api import *
-from onyx.neurons.core import OnyxNeuron
+from onyx.brain.core import OnyxNeuron
 from onyx.utils.log import getLogger
 from onyx.api.request import BearerAuth
 import requests

@@ -9,6 +9,8 @@ import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import { useInjectSaga } from 'onyx/utils';
+import { useInjectReducer } from 'onyx/utils';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
@@ -40,17 +42,14 @@ import {
   changeNote,
   changeId,
 } from './actions';
-import calendarReducer from './reducer';
-import calendarSaga from './saga';
+import saga from './saga';
+import reducer from './reducer';
 import messages, { getCalendarMessage } from './messages';
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 require('globalize/lib/cultures/globalize.culture.fr');
-
-export const reducer = calendarReducer;
-export const saga = calendarSaga;
 
 const localizer = globalizeLocalizer(globalize);
 const Cal = withDragAndDrop(BaseCalendar);
@@ -73,6 +72,8 @@ export function Calendar({
   changeTitleFunc,
   changePlaceFunc,
 }) {
+  useInjectReducer({ key: 'calendar', reducer });
+  useInjectSaga({ key: 'calendar', saga });
 
   useEffect(() => {
     getEventsFunc();
@@ -335,12 +336,12 @@ Calendar.propTypes = {
   changeIdFunc: PropTypes.func,
 };
 
-export const mapStateToProps = createStructuredSelector({
+const mapStateToProps = createStructuredSelector({
   events: makeSelectEvents(),
   calendar: makeSelectCalendar(),
 });
 
-export function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     getEventsFunc: () => {
       dispatch(getEvents());
@@ -401,3 +402,13 @@ export function mapDispatchToProps(dispatch) {
     },
   };
 }
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+export default compose(
+  withConnect,
+  memo,
+)(Calendar);
