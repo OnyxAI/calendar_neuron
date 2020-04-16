@@ -11,7 +11,7 @@ var calendar;calendar =
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "?8a7d":
+/***/ "?afb8":
 /*!***********************!*\
   !*** container entry ***!
   \***********************/
@@ -20,7 +20,7 @@ var calendar;calendar =
 /*! runtime requirements: __webpack_require__.d, __webpack_require__.o, __webpack_exports__, __webpack_require__.e, __webpack_require__, __webpack_require__.* */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("var moduleMap = {\n\t\"Calendar\": () => {\n\t\treturn Promise.all([__webpack_require__.e(\"vendors-node_modules_react-big-calendar_dist_react-big-calendar_esm_js-node_modules_react-big-230917\"), __webpack_require__.e(\"index_js-node_modules_moment_locale_sync_recursive_-\"), __webpack_require__.e(\"-_9a3c\")]).then(() => () => __webpack_require__(/*! ./index.js */ \"./index.js\"));\n\t}\n};\nvar get = (module) => {\n\treturn (\n\t\t__webpack_require__.o(moduleMap, module)\n\t\t\t? moduleMap[module]()\n\t\t\t: Promise.resolve().then(() => {\n\t\t\t\tthrow new Error(\"Module \" + module + \" does not exist in container.\");\n\t\t\t})\n\t);\n};\nvar override = (override) => {\n\tObject.assign(__webpack_require__.O, override);\n}\n\n// This exports getters to disallow modifications\n__webpack_require__.d(exports, {\n\tget: () => get,\n\toverride: () => override\n});\n\n//# sourceURL=webpack://calendar/container_entry?");
+eval("var moduleMap = {\n\t\"Calendar\": () => {\n\t\treturn Promise.all([__webpack_require__.e(\"vendors-node_modules_react-big-calendar_dist_react-big-calendar_esm_js-node_modules_react-big-230917\"), __webpack_require__.e(\"index_js-node_modules_moment_locale_sync_recursive_-\"), __webpack_require__.e(\"-_9a3c\")]).then(() => () => __webpack_require__(/*! ./index.js */ \"./index.js\"));\n\t},\n\t\"i18n\": () => {\n\t\treturn __webpack_require__.e(\"src_i18n_js\").then(() => () => __webpack_require__(/*! ./src/i18n.js */ \"./src/i18n.js\"));\n\t}\n};\nvar get = (module) => {\n\treturn (\n\t\t__webpack_require__.o(moduleMap, module)\n\t\t\t? moduleMap[module]()\n\t\t\t: Promise.resolve().then(() => {\n\t\t\t\tthrow new Error(\"Module \" + module + \" does not exist in container.\");\n\t\t\t})\n\t);\n};\nvar override = (override) => {\n\tObject.assign(__webpack_require__.O, override);\n}\n\n// This exports getters to disallow modifications\n__webpack_require__.d(exports, {\n\tget: () => get,\n\toverride: () => override\n});\n\n//# sourceURL=webpack://calendar/container_entry?");
 
 /***/ }),
 
@@ -407,6 +407,6 @@ eval("var external = __webpack_require__(\"container-reference/onyx\");\nexterna
 /******/ 	// module factories are used so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__("?8a7d");
+/******/ 	return __webpack_require__("?afb8");
 /******/ })()
 ;

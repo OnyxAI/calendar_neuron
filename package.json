@@ -4,6 +4,7 @@
   "description": "Calendar neuron",
   "main": "index.js",
   "scripts": {
+    "extract-intl": "node ./scripts/extract-intl.js",
     "prebuild": "npm run build:clean",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js --mode=production --color --progress --display-optimization-bailout",
     "build:clean": "rimraf ./dist",

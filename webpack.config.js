@@ -22,10 +22,6 @@ module.exports = {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-        options: {
-          presets: ['@babel/preset-react'],
-          plugins: ['@babel/plugin-proposal-class-properties'],
-        },
       },
       {
         // Preprocess our own .css files
@@ -114,6 +110,7 @@ module.exports = {
       filename: 'remoteEntry.js',
       exposes: {
         Calendar: './index.js',
+        i18n: './src/i18n.js'
       },
       remotes: {
         onyx: 'onyx',

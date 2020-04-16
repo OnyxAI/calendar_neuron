@@ -1,0 +1,12 @@
+{
+  "app.containers.Calendar.add_event": "Ajouter un évenement",
+  "app.containers.Calendar.delete": "Supprimer",
+  "app.containers.Calendar.end": "Fin",
+  "app.containers.Calendar.header": "Calendrier",
+  "app.containers.Calendar.note": "Note",
+  "app.containers.Calendar.place": "Lieu",
+  "app.containers.Calendar.send": "Envoyer",
+  "app.containers.Calendar.start": "Début",
+  "app.containers.Calendar.title": "Titre",
+  "app.containers.Calendar.update_event": "Modifier un évenement"
+}
