@@ -25,6 +25,10 @@ export const DELETE_EVENT = 'app/Calendar/DELETE_EVENT';
 export const DELETE_EVENT_SUCCESS = 'app/Calendar/DELETE_EVENT_SUCCESS';
 export const DELETE_EVENT_ERROR = 'app/Calendar/DELETE_EVENT_ERROR';
 
+export const TODAY_EVENTS = 'app/Calendar/TODAY_EVENTS';
+export const TODAY_EVENTS_SUCCESS = 'app/Calendar/TODAY_EVENTS_SUCCESS';
+export const TODAY_EVENTS_ERROR = 'app/Calendar/TODAY_EVENTS_ERROR';
+
 export const CHANGE_ID = 'app/Calendar/CHANGE_ID';
 export const CHANGE_START = 'app/Calendar/CHANGE_START';
 export const CHANGE_END = 'app/Calendar/CHANGE_END';

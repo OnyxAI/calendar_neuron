@@ -23,8 +23,6 @@ class CalendarToday(Resource):
 
             for event in all_events:
                 event_date = event['start'].split("T")[0]
-                print("today  " + today)
-                print(event_date)
                 if(today == event_date):
                     today_events.append(event)
 
@@ -93,7 +91,7 @@ class Calendar(Resource):
                                            color=color)
                 db.session.add(query)
                 db.session.commit()
-    
+
             return jsonify(status="success")
         except Exception as e:
             print(e)
@@ -111,7 +109,7 @@ class Calendar(Resource):
             end = args['end']
 
             query = CalendarModel.query.filter_by(id=id, user=str(user['id'])).first()
-            
+
             query.start = start
             query.end = end
 
@@ -145,7 +143,7 @@ class UpdateCalendar(Resource):
             color = args['color']
 
             update = CalendarModel.query.filter_by(id=id, user=str(user['id'])).first()
-            
+
             update.title = title
             update.note = note
             update.place = place
@@ -153,7 +151,7 @@ class UpdateCalendar(Resource):
 
             db.session.add(update)
             db.session.commit()
-     
+
             return jsonify(status="success")
         except Exception as e:
             return jsonify(status="error", message="{}".format(e)), 500
@@ -171,8 +169,7 @@ class UpdateCalendar(Resource):
 
             db.session.delete(delete)
             db.session.commit()
-     
+
             return jsonify(status="success")
         except Exception as e:
             return jsonify(status="error", message="{}".format(e)), 500
-

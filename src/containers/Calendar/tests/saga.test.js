@@ -14,7 +14,6 @@ import {
 } from '../constants';
 import * as CalendarAction from '../actions';
 
-import { API_URL } from '../../App/constants';
 import request from '../../../utils/request';
 
 import calendarSaga, {
@@ -64,7 +63,7 @@ describe('calendarUser Saga', () => {
     expect(callDescriptor).toEqual(
       call(request, {
         method: 'GET',
-        url: `${API_URL}/calendar`,
+        url: `/calendar`,
         headers: { Authorization: 'Bearer my_token' },
       }),
     );
@@ -121,7 +120,7 @@ describe('calendarUser Saga', () => {
     expect(callDescriptor).toEqual(
       call(request, {
         method: 'POST',
-        url: `${API_URL}/calendar`,
+        url: `/calendar`,
         headers: { Authorization: 'Bearer my_token' },
         data: calendarState,
       }),
@@ -187,7 +186,7 @@ describe('calendarUser Saga', () => {
     expect(callDescriptor).toEqual(
       call(request, {
         method: 'PUT',
-        url: `${API_URL}/calendar`,
+        url: `/calendar`,
         headers: { Authorization: 'Bearer my_token' },
         data: {
           id: '1',
@@ -259,7 +258,7 @@ describe('calendarUser Saga', () => {
     expect(callDescriptor).toEqual(
       call(request, {
         method: 'POST',
-        url: `${API_URL}/calendar/update`,
+        url: `/calendar/update`,
         headers: { Authorization: 'Bearer my_token' },
         data: {
           id: '1',
@@ -329,7 +328,7 @@ describe('calendarUser Saga', () => {
     expect(callDescriptor).toEqual(
       call(request, {
         method: 'PUT',
-        url: `${API_URL}/calendar/update`,
+        url: `/calendar/update`,
         headers: { Authorization: 'Bearer my_token' },
         data: {
           id: '1',

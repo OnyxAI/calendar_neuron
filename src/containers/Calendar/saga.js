@@ -7,6 +7,7 @@ import {
   UPDATE_DATE_EVENT,
   UPDATE_EVENT,
   DELETE_EVENT,
+  TODAY_EVENTS,
 } from './constants';
 
 import {
@@ -21,6 +22,8 @@ import {
   getEvents,
   deleteEventError,
   deleteEventSuccess,
+  getTodayEventsSuccess,
+  getTodayEventsError,
 } from './actions';
 
 import makeSelectCalendar from './selectors';
@@ -44,6 +47,28 @@ export function* loadGetEvents() {
     }
   } catch (error) {
     yield put(getEventsError(error.toString()));
+  }
+}
+
+// Get Today Events
+export function* loadTodayEvents() {
+  const token = localStorage.getItem('access_token');
+
+  try {
+    const result = yield call(request, {
+      method: 'GET',
+      url: `/api/neuron/calendar/today`,
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (result && result.status === 'success') {
+      yield put(getTodayEventsSuccess(result.events));
+    } else if (result && result.status === 'error') {
+      yield put(getTodayEventsError(result.message));
+    } else {
+      yield put(getTodayEventsError('An error has occured'));
+    }
+  } catch (error) {
+    yield put(getTodayEventsError(error.toString()));
   }
 }
 
@@ -177,4 +202,5 @@ export default function* calendarSaga() {
   yield takeLatest(UPDATE_DATE_EVENT, loadUpdateDateEvent);
   yield takeLatest(UPDATE_EVENT, loadUpdateEvent);
   yield takeLatest(DELETE_EVENT, loadDeleteEvent);
+  yield takeLatest(TODAY_EVENTS, loadTodayEvents);
 }

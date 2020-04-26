@@ -4,9 +4,34 @@
   "routes": [
     {
       "url": "/calendar",
+      "default": "true",
       "name": "Calendar",
       "raw": "calendar",
       "icon": "fa fa-calendar"
+    }
+  ],
+  "widgets": [
+    {
+      "beautifulName": "Calendar Today",
+      "name": "TodayWidget",
+      "raw": "calendar"
+    },
+    {
+      "beautifulName": "Calendar",
+      "name": "CalendarWidget",
+      "raw": "calendar"
+    }
+  ],
+  "screen": [
+    {
+      "beautifulName": "Calendar Today",
+      "name": "TodayWidget",
+      "raw": "calendar"
+    },
+    {
+      "beautifulName": "Calendar",
+      "name": "CalendarWidget",
+      "raw": "calendar"
     }
   ]
 }

@@ -11,21 +11,13 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { useInjectSaga } from 'onyx/utils';
 import { useInjectReducer } from 'onyx/utils';
+import { Container } from 'onyx/components';
+import { Widget } from 'onyx/components';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import globalize from 'globalize';
 
-import { Card, CardBody, CardHeader, CardTitle } from 'uikit-react';
-import { Modal } from 'react-materialize';
-import M from 'materialize-css';
-
-import {
-  Calendar as BaseCalendar,
-  globalizeLocalizer,
-} from 'react-big-calendar';
-import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
-import { ChromePicker } from 'react-color';
+import CalendarComponent from '../../components/Calendar';
 
 import makeSelectCalendar, { makeSelectEvents } from './selectors';
 import {
@@ -41,18 +33,11 @@ import {
   changePlace,
   changeNote,
   changeId,
+  getTodayEvents,
 } from './actions';
 import saga from './saga';
 import reducer from './reducer';
-import messages, { getCalendarMessage } from './messages';
-
-import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-
-require('globalize/lib/cultures/globalize.culture.fr');
-
-const localizer = globalizeLocalizer(globalize);
-const Cal = withDragAndDrop(BaseCalendar);
+import messages from './messages';
 
 export function Calendar({
   user,
@@ -85,236 +70,117 @@ export function Calendar({
         <title>Calendar</title>
         <meta name="description" content="Description of Calendar" />
       </Helmet>
-      <Card hover className={widget && 'widget'}>
-        <CardHeader>
-          <CardTitle>
-            <FormattedMessage {...messages.header} />
-          </CardTitle>
-          <CardBody>
-            <Cal
-              localizer={localizer}
-              events={events !== undefined ? events : []}
-              eventPropGetter={event => {
-                if (event.color) {
-                  return { style: { backgroundColor: event.color } };
-                }
-                return {};
-              }}
-              resizable
-              culture={user.language.substring(0, 2)}
-              messages={getCalendarMessage(user.language)}
-              selectable
-              onEventDrop={({ event, start, end }) =>
-                updateDateEventFunc(event.id, start, end)
-              }
-              onEventResize={({ event, start, end }) =>
-                updateDateEventFunc(event.id, start, end)
-              }
-              onSelectSlot={({ start, end }) => {
-                changeStartFunc(start);
-                changeEndFunc(end);
-                // eslint-disable-next-line no-undef
-                M.Modal.getInstance(addModal).open();
-              }}
-              onSelectEvent={event => {
-                changeStartFunc(event.start);
-                changeEndFunc(event.end);
-                changeColorFunc(event.color);
-                changeNoteFunc(event.note);
-                changePlaceFunc(event.place);
-                changeTitleFunc(event.title);
-                changeIdFunc(event.id);
-                // eslint-disable-next-line no-undef
-                M.Modal.getInstance(updateModal).open();
-              }}
-              startAccessor="start"
-              endAccessor="end"
-              style={{ height: widget ? '29vh' : 500 }}
-            />
-            <Modal
-              id="addModal"
-              actions={<p />}
-              header={<FormattedMessage {...messages.add_event} />}
-            >
-              <form onSubmit={addEventFunc}>
-                <div className="uk-padding-small">
-                  <label htmlFor="title">
-                    <FormattedMessage {...messages.title} />
-                  </label>
-                  <FormattedMessage {...messages.title}>
-                    {message => (
-                      <input
-                        type="text"
-                        className="uk-input uk-form-large"
-                        value={calendar.title}
-                        name="title"
-                        id="title"
-                        onChange={changeTitleFunc}
-                        placeholder={message}
-                      />
-                    )}
-                  </FormattedMessage>
-                </div>
-                <div className="uk-padding-small">
-                  <label htmlFor="place">
-                    <FormattedMessage {...messages.place} />
-                  </label>
-                  <FormattedMessage {...messages.place}>
-                    {message => (
-                      <input
-                        type="text"
-                        className="uk-input uk-form-large"
-                        value={calendar.place}
-                        name="place"
-                        id="place"
-                        onChange={changePlaceFunc}
-                        placeholder={message}
-                      />
-                    )}
-                  </FormattedMessage>
-                </div>
-                <div className="uk-padding-small">
-                  <label htmlFor="note">
-                    <FormattedMessage {...messages.note} />
-                  </label>
-                  <FormattedMessage {...messages.note}>
-                    {message => (
-                      <input
-                        type="text"
-                        className="uk-input uk-form-large"
-                        value={calendar.note}
-                        name="note"
-                        id="note"
-                        onChange={changeNoteFunc}
-                        placeholder={message}
-                      />
-                    )}
-                  </FormattedMessage>
-                </div>
-                <div className="uk-padding-small uk-position-top-center uk-position-relative">
-                  <ChromePicker
-                    color={calendar.color}
-                    onChangeComplete={changeColorFunc}
-                  />
-                </div>
-                <div className="uk-padding-small">
-                  <p>
-                    <FormattedMessage {...messages.start} /> :{' '}
-                    {calendar.start.toString()}
-                  </p>
-                  <p>
-                    <FormattedMessage {...messages.end} /> :{' '}
-                    {calendar.end.toString()}
-                  </p>
-                </div>
-                <div className="uk-padding-small center">
-                  <button
-                    type="submit"
-                    className="uk-button uk-button-primary uk-button-large"
-                  >
-                    <FormattedMessage {...messages.send} />
-                  </button>
-                </div>
-              </form>
-            </Modal>
-            <Modal
-              id="updateModal"
-              actions={<p />}
-              header={<FormattedMessage {...messages.update_event} />}
-            >
-              <form onSubmit={updateEventFunc}>
-                <div className="uk-padding-small">
-                  <label htmlFor="title">
-                    <FormattedMessage {...messages.title} />
-                  </label>
-                  <FormattedMessage {...messages.title}>
-                    {message => (
-                      <input
-                        type="text"
-                        className="uk-input uk-form-large"
-                        value={calendar.title}
-                        name="title"
-                        id="title"
-                        onChange={changeTitleFunc}
-                        placeholder={message}
-                      />
-                    )}
-                  </FormattedMessage>
-                </div>
-                <div className="uk-padding-small">
-                  <label htmlFor="place">
-                    <FormattedMessage {...messages.place} />
-                  </label>
-                  <FormattedMessage {...messages.place}>
-                    {message => (
-                      <input
-                        type="text"
-                        className="uk-input uk-form-large"
-                        value={calendar.place}
-                        name="place"
-                        id="place"
-                        onChange={changePlaceFunc}
-                        placeholder={message}
-                      />
-                    )}
-                  </FormattedMessage>
-                </div>
-                <div className="uk-padding-small">
-                  <label htmlFor="note">
-                    <FormattedMessage {...messages.note} />
-                  </label>
-                  <FormattedMessage {...messages.note}>
-                    {message => (
-                      <input
-                        type="text"
-                        className="uk-input uk-form-large"
-                        value={calendar.note}
-                        name="note"
-                        id="note"
-                        onChange={changeNoteFunc}
-                        placeholder={message}
-                      />
-                    )}
-                  </FormattedMessage>
-                </div>
-                <div className="uk-padding-small uk-position-top-center uk-position-relative">
-                  <ChromePicker
-                    color={calendar.color}
-                    onChangeComplete={changeColorFunc}
-                  />
-                </div>
-                <div className="uk-padding-small">
-                  <p>
-                    <FormattedMessage {...messages.start} /> :{' '}
-                    {calendar.start.toString()}
-                  </p>
-                  <p>
-                    <FormattedMessage {...messages.end} /> :{' '}
-                    {calendar.end.toString()}
-                  </p>
-                </div>
-                <div className="uk-padding-small center">
-                  <button
-                    type="button"
-                    className="uk-margin-right uk-button uk-button-primary uk-button-large"
-                    onClick={deleteEventFunc}
-                  >
-                    <FormattedMessage {...messages.delete} />
-                  </button>
-                  <button
-                    type="submit"
-                    className="uk-margin-left uk-button uk-button-primary uk-button-large"
-                  >
-                    <FormattedMessage {...messages.send} />
-                  </button>
-                </div>
-              </form>
-            </Modal>
-          </CardBody>
-        </CardHeader>
-      </Card>
+      <Container user={user} title={<FormattedMessage {...messages.header} />}>
+        <CalendarComponent
+          calendar={calendar}
+          events={events}
+          user={user}
+          widget={false}
+          addEventFunc={addEventFunc}
+          deleteEventFunc={deleteEventFunc}
+          updateEventFunc={updateEventFunc}
+          updateDateEventFunc={updateDateEventFunc}
+          changeStartFunc={changeStartFunc}
+          changeEndFunc={changeEndFunc}
+          changeIdFunc={changeIdFunc}
+          changeColorFunc={changeColorFunc}
+          changeNoteFunc={changeNoteFunc}
+          changeTitleFunc={changeTitleFunc}
+          changePlaceFunc={changePlaceFunc}
+        />
+      </Container>
     </div>
   );
+}
+
+export function CalendarWidgetComponent({
+  user,
+  calendar,
+  widget,
+  events,
+  getEventsFunc,
+  addEventFunc,
+  deleteEventFunc,
+  updateDateEventFunc,
+  updateEventFunc,
+  changeIdFunc,
+  changeColorFunc,
+  changeEndFunc,
+  changeNoteFunc,
+  changeStartFunc,
+  changeTitleFunc,
+  changePlaceFunc,
+  deleteWidget,
+}) {
+  useInjectReducer({ key: 'calendar', reducer });
+  useInjectSaga({ key: 'calendar', saga });
+
+  useEffect(() => {
+    getEventsFunc();
+  }, [0]);
+
+  return (
+    <div>
+      <Widget delete={() => deleteWidget()} title={<FormattedMessage {...messages.header} />}>
+        <CalendarComponent
+          calendar={calendar}
+          events={events}
+          user={user}
+          widget
+          addEventFunc={addEventFunc}
+          deleteEventFunc={deleteEventFunc}
+          updateEventFunc={updateEventFunc}
+          updateDateEventFunc={updateDateEventFunc}
+          changeStartFunc={changeStartFunc}
+          changeEndFunc={changeEndFunc}
+          changeIdFunc={changeIdFunc}
+          changeColorFunc={changeColorFunc}
+          changeNoteFunc={changeNoteFunc}
+          changeTitleFunc={changeTitleFunc}
+          changePlaceFunc={changePlaceFunc}
+        />
+      </Widget>
+    </div>
+  );
+}
+
+export function TodayWidgetComponent({ deleteWidget, getTodayEventsFunc, calendar, events }){
+  useInjectReducer({ key: 'calendar', reducer });
+  useInjectSaga({ key: 'calendar', saga });
+
+  useEffect(() => {
+    getTodayEventsFunc();
+  }, [0])
+
+  return (
+    <div>
+      {calendar && calendar.todayEvents.length !== 0 ? (
+        <Widget
+          title={<FormattedMessage {...messages.header} />}
+          delete={() => deleteWidget()}
+        >
+          <ul className="uk-list uk-list-bullet">
+            {calendar.todayEvents.map(event => (
+              <li>{event.title}</li>
+            ))}
+          </ul>
+        </Widget>
+      ) : (
+        <Widget
+          title={<FormattedMessage {...messages.header} />}
+          delete={() => deleteWidget()}
+        >
+          <p>{<FormattedMessage {...messages.nothing_today} />}</p>
+        </Widget>
+      )}
+    </div>
+  )
+}
+
+TodayWidgetComponent.propTypes = {
+  calendar: PropTypes.object,
+  deleteWidget: PropTypes.func,
+  getTodayEventsFunc: PropTypes.func,
 }
 
 Calendar.propTypes = {
@@ -336,6 +202,26 @@ Calendar.propTypes = {
   changeIdFunc: PropTypes.func,
 };
 
+CalendarWidgetComponent.propTypes = {
+  user: PropTypes.object,
+  widget: PropTypes.bool,
+  events: PropTypes.array,
+  calendar: PropTypes.object,
+  getEventsFunc: PropTypes.func,
+  addEventFunc: PropTypes.func,
+  updateDateEventFunc: PropTypes.func,
+  updateEventFunc: PropTypes.func,
+  deleteEventFunc: PropTypes.func,
+  changeColorFunc: PropTypes.func,
+  changePlaceFunc: PropTypes.func,
+  changeTitleFunc: PropTypes.func,
+  changeNoteFunc: PropTypes.func,
+  changeStartFunc: PropTypes.func,
+  changeEndFunc: PropTypes.func,
+  changeIdFunc: PropTypes.func,
+  deleteWidget: PropTypes.func,
+};
+
 const mapStateToProps = createStructuredSelector({
   events: makeSelectEvents(),
   calendar: makeSelectCalendar(),
@@ -343,6 +229,9 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
+    getTodayEventsFunc: () => {
+      dispatch(getTodayEvents());
+    },
     getEventsFunc: () => {
       dispatch(getEvents());
     },
@@ -407,6 +296,17 @@ const withConnect = connect(
   mapStateToProps,
   mapDispatchToProps,
 );
+
+export const CalendarWidget = compose(
+  withConnect,
+  memo,
+)(CalendarWidgetComponent);
+
+
+export const TodayWidget = compose(
+  withConnect,
+  memo,
+)(TodayWidgetComponent);
 
 export default compose(
   withConnect,

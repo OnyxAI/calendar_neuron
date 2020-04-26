@@ -49,6 +49,10 @@ export default defineMessages({
     id: `${scope}.update_event`,
     defaultMessage: 'Update Event',
   },
+  nothing_today: {
+    id: `${scope}.nothing_today`,
+    defaultMessage: 'Nothing Today',
+  },
 });
 
 const calendarMessagesFR = {

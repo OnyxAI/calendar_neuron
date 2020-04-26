@@ -35,10 +35,11 @@ class CalendarNeuron(OnyxNeuron):
     def handleGetToday(self, event):
         token = event.data['token']
 
-        response = requests.get("http://localhost:5000/neuron/calendar/today", auth=BearerAuth(token))
 
+        response = requests.get("http://localhost:5000/api/neuron/calendar/today", auth=BearerAuth(token))
         all_events = response.json()['events']
-        
+
+
         text = ', '.join(event['title'] for event in all_events)
         self.speak(text)
 

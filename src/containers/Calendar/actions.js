@@ -21,6 +21,9 @@ import {
   DELETE_EVENT,
   DELETE_EVENT_ERROR,
   DELETE_EVENT_SUCCESS,
+  TODAY_EVENTS,
+  TODAY_EVENTS_ERROR,
+  TODAY_EVENTS_SUCCESS,
   CHANGE_ID,
   CHANGE_COLOR,
   CHANGE_END,
@@ -86,6 +89,26 @@ export function updateEventSuccess() {
 export function updateEventError(error) {
   return {
     type: UPDATE_EVENT_ERROR,
+    error,
+  };
+}
+
+export function getTodayEvents() {
+  return {
+    type: TODAY_EVENTS,
+  };
+}
+
+export function getTodayEventsSuccess(events) {
+  return {
+    type: TODAY_EVENTS_SUCCESS,
+    events,
+  };
+}
+
+export function getTodayEventsError(error) {
+  return {
+    type: TODAY_EVENTS_ERROR,
     error,
   };
 }

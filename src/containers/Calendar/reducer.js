@@ -23,10 +23,14 @@ import {
   UPDATE_DATE_EVENT_ERROR,
   UPDATE_EVENT_SUCCESS,
   UPDATE_EVENT_ERROR,
+  TODAY_EVENTS,
+  TODAY_EVENTS_ERROR,
+  TODAY_EVENTS_SUCCESS,
 } from './constants';
 
 export const initialState = {
   events: [],
+  todayEvents: [],
   errorText: '',
   title: '',
   start: '',
@@ -66,6 +70,12 @@ const calendarReducer = (state = initialState, action) =>
         draft.events = action.events;
         break;
       case GET_EVENTS_ERROR:
+        draft.errorText = action.error;
+        break;
+      case TODAY_EVENTS_SUCCESS:
+        draft.todayEvents = action.events;
+        break;
+      case TODAY_EVENTS_ERROR:
         draft.errorText = action.error;
         break;
       case UPDATE_DATE_EVENT:

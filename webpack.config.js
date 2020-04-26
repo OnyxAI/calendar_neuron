@@ -11,7 +11,7 @@ module.exports = {
     port: 3001,
   },
   output: {
-    publicPath: '/neurons/calendar/',
+    publicPath: '/api/neurons/serve/calendar/',
   },
   optimization: {
     minimize: false,
@@ -110,6 +110,8 @@ module.exports = {
       filename: 'remoteEntry.js',
       exposes: {
         Calendar: './index.js',
+        TodayWidget: './today_widget.js',
+        CalendarWidget: './calendar_widget.js',
         i18n: './src/i18n.js'
       },
       remotes: {

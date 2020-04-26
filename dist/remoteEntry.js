@@ -11,7 +11,7 @@ var calendar;calendar =
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "?afb8":
+/***/ "?2b6e":
 /*!***********************!*\
   !*** container entry ***!
   \***********************/
@@ -20,7 +20,7 @@ var calendar;calendar =
 /*! runtime requirements: __webpack_require__.d, __webpack_require__.o, __webpack_exports__, __webpack_require__.e, __webpack_require__, __webpack_require__.* */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("var moduleMap = {\n\t\"Calendar\": () => {\n\t\treturn Promise.all([__webpack_require__.e(\"vendors-node_modules_react-big-calendar_dist_react-big-calendar_esm_js-node_modules_react-big-230917\"), __webpack_require__.e(\"index_js-node_modules_moment_locale_sync_recursive_-\"), __webpack_require__.e(\"-_9a3c\")]).then(() => () => __webpack_require__(/*! ./index.js */ \"./index.js\"));\n\t},\n\t\"i18n\": () => {\n\t\treturn __webpack_require__.e(\"src_i18n_js\").then(() => () => __webpack_require__(/*! ./src/i18n.js */ \"./src/i18n.js\"));\n\t}\n};\nvar get = (module) => {\n\treturn (\n\t\t__webpack_require__.o(moduleMap, module)\n\t\t\t? moduleMap[module]()\n\t\t\t: Promise.resolve().then(() => {\n\t\t\t\tthrow new Error(\"Module \" + module + \" does not exist in container.\");\n\t\t\t})\n\t);\n};\nvar override = (override) => {\n\tObject.assign(__webpack_require__.O, override);\n}\n\n// This exports getters to disallow modifications\n__webpack_require__.d(exports, {\n\tget: () => get,\n\toverride: () => override\n});\n\n//# sourceURL=webpack://calendar/container_entry?");
+eval("var moduleMap = {\n\t\"Calendar\": () => {\n\t\treturn Promise.all([__webpack_require__.e(\"vendors-node_modules_react-big-calendar_dist_react-big-calendar_esm_js-node_modules_react-big-180b66\"), __webpack_require__.e(\"src_containers_Calendar_index_js-node_modules_moment_locale_sync_recursive_-\"), __webpack_require__.e(\"index_js\")]).then(() => () => __webpack_require__(/*! ./index.js */ \"./index.js\"));\n\t},\n\t\"TodayWidget\": () => {\n\t\treturn Promise.all([__webpack_require__.e(\"vendors-node_modules_react-big-calendar_dist_react-big-calendar_esm_js-node_modules_react-big-180b66\"), __webpack_require__.e(\"src_containers_Calendar_index_js-node_modules_moment_locale_sync_recursive_-\"), __webpack_require__.e(\"today_widget_js\")]).then(() => () => __webpack_require__(/*! ./today_widget.js */ \"./today_widget.js\"));\n\t},\n\t\"CalendarWidget\": () => {\n\t\treturn Promise.all([__webpack_require__.e(\"vendors-node_modules_react-big-calendar_dist_react-big-calendar_esm_js-node_modules_react-big-180b66\"), __webpack_require__.e(\"src_containers_Calendar_index_js-node_modules_moment_locale_sync_recursive_-\"), __webpack_require__.e(\"calendar_widget_js\")]).then(() => () => __webpack_require__(/*! ./calendar_widget.js */ \"./calendar_widget.js\"));\n\t},\n\t\"i18n\": () => {\n\t\treturn __webpack_require__.e(\"src_i18n_js\").then(() => () => __webpack_require__(/*! ./src/i18n.js */ \"./src/i18n.js\"));\n\t}\n};\nvar get = (module) => {\n\treturn (\n\t\t__webpack_require__.o(moduleMap, module)\n\t\t\t? moduleMap[module]()\n\t\t\t: Promise.resolve().then(() => {\n\t\t\t\tthrow new Error(\"Module \" + module + \" does not exist in container.\");\n\t\t\t})\n\t);\n};\nvar override = (override) => {\n\tObject.assign(__webpack_require__.O, override);\n}\n\n// This exports getters to disallow modifications\n__webpack_require__.d(exports, {\n\tget: () => get,\n\toverride: () => override\n});\n\n//# sourceURL=webpack://calendar/container_entry?");
 
 /***/ }),
 
@@ -184,17 +184,15 @@ eval("var external = __webpack_require__(\"container-reference/onyx\");\nexterna
 /******/ 	(() => {
 /******/ 		__webpack_require__.O = {};
 /******/ 		var chunkMapping = {
-/******/ 			"index_js-node_modules_moment_locale_sync_recursive_-": [
+/******/ 			"src_containers_Calendar_index_js-node_modules_moment_locale_sync_recursive_-": [
 /******/ 				"?f292",
 /******/ 				"?06d7",
 /******/ 				"?244e",
 /******/ 				"?58b7",
 /******/ 				"?1277",
+/******/ 				"?9a3c",
 /******/ 				"?3edc",
 /******/ 				"?fdf0"
-/******/ 			],
-/******/ 			"-_9a3c": [
-/******/ 				"?9a3c"
 /******/ 			]
 /******/ 		};
 /******/ 		var idToNameMapping = {
@@ -203,9 +201,9 @@ eval("var external = __webpack_require__(\"container-reference/onyx\");\nexterna
 /******/ 			"?244e": "react-intl",
 /******/ 			"?58b7": "react-materialize",
 /******/ 			"?1277": "react-redux",
+/******/ 			"?9a3c": "react",
 /******/ 			"?3edc": "redux",
-/******/ 			"?fdf0": "reselect",
-/******/ 			"?9a3c": "react"
+/******/ 			"?fdf0": "reselect"
 /******/ 		};
 /******/ 		var fallbackMapping = {
 /******/ 			"?f292": () => {
@@ -223,14 +221,14 @@ eval("var external = __webpack_require__(\"container-reference/onyx\");\nexterna
 /******/ 			"?1277": () => {
 /******/ 				return Promise.all([__webpack_require__.e("vendors-node_modules_react-dom_index_js-_ee79"), __webpack_require__.e("vendors-node_modules_react-redux_es_index_js")]).then(() => () => __webpack_require__("../../node_modules/react-redux/es/index.js"))
 /******/ 			},
+/******/ 			"?9a3c": () => {
+/******/ 				return __webpack_require__.e("vendors-node_modules_react_index_js").then(() => () => __webpack_require__("./node_modules/react/index.js"))
+/******/ 			},
 /******/ 			"?3edc": () => {
 /******/ 				return __webpack_require__.e("vendors-node_modules_redux_es_redux_js").then(() => () => __webpack_require__("../../node_modules/redux/es/redux.js"))
 /******/ 			},
 /******/ 			"?fdf0": () => {
 /******/ 				return __webpack_require__.e("node_modules_reselect_es_index_js").then(() => () => __webpack_require__("../../node_modules/reselect/es/index.js"))
-/******/ 			},
-/******/ 			"?9a3c": () => {
-/******/ 				return __webpack_require__.e("vendors-node_modules_react_index_js").then(() => () => __webpack_require__("./node_modules/react/index.js"))
 /******/ 			}
 /******/ 		};
 /******/ 		__webpack_require__.f.overridables = (chunkId, promises) => {
@@ -249,17 +247,22 @@ eval("var external = __webpack_require__(\"container-reference/onyx\");\nexterna
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
-/******/ 		__webpack_require__.p = "/neurons/calendar/";
+/******/ 		__webpack_require__.p = "/api/neurons/serve/calendar/";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/remotes loading */
 /******/ 	(() => {
 /******/ 		var chunkMapping = {
-/******/ 			"index_js-node_modules_moment_locale_sync_recursive_-": [
+/******/ 			"src_containers_Calendar_index_js-node_modules_moment_locale_sync_recursive_-": [
+/******/ 				"?3158",
 /******/ 				"?1509"
 /******/ 			]
 /******/ 		};
 /******/ 		var idToExternalAndNameMapping = {
+/******/ 			"?3158": [
+/******/ 				"?599b",
+/******/ 				"components"
+/******/ 			],
 /******/ 			"?1509": [
 /******/ 				"?599b",
 /******/ 				"utils"
@@ -299,7 +302,7 @@ eval("var external = __webpack_require__(\"container-reference/onyx\");\nexterna
 /******/ 					if(installedChunkData) {
 /******/ 						promises.push(installedChunkData[2]);
 /******/ 					} else {
-/******/ 						if("-_9a3c" != chunkId) {
+/******/ 						if(true) { // all chunks have JS
 /******/ 							// setup Promise in chunk cache
 /******/ 							var promise = new Promise((resolve, reject) => {
 /******/ 								installedChunkData = installedChunks[chunkId] = [resolve, reject];
@@ -407,6 +410,6 @@ eval("var external = __webpack_require__(\"container-reference/onyx\");\nexterna
 /******/ 	// module factories are used so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__("?afb8");
+/******/ 	return __webpack_require__("?2b6e");
 /******/ })()
 ;

@@ -36,19 +36,20 @@ eval("function _defineProperty(obj, key, value) { if (key in obj) { Object.defin
 /*! export app.containers.Calendar.end [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
 /*! export app.containers.Calendar.header [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
 /*! export app.containers.Calendar.note [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
+/*! export app.containers.Calendar.nothing_today [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
 /*! export app.containers.Calendar.place [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
 /*! export app.containers.Calendar.send [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
 /*! export app.containers.Calendar.start [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
 /*! export app.containers.Calendar.title [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
 /*! export app.containers.Calendar.update_event [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
 /*! export default [provided] [maybe used (runtime-defined)] [no name, virtual] */
-/*!   ... (11 already listed exports) */
+/*!   ... (12 already listed exports) */
 /*! other exports [not provided] [maybe used (runtime-defined)] */
 /*! runtime requirements: module */
 /***/ ((module) => {
 
 "use strict";
-eval("module.exports = JSON.parse(\"{\\\"app.containers.Calendar.add_event\\\":\\\"Add Event\\\",\\\"app.containers.Calendar.delete\\\":\\\"Delete\\\",\\\"app.containers.Calendar.end\\\":\\\"End\\\",\\\"app.containers.Calendar.header\\\":\\\"Calendar\\\",\\\"app.containers.Calendar.note\\\":\\\"Note\\\",\\\"app.containers.Calendar.place\\\":\\\"Place\\\",\\\"app.containers.Calendar.send\\\":\\\"Send\\\",\\\"app.containers.Calendar.start\\\":\\\"Start\\\",\\\"app.containers.Calendar.title\\\":\\\"Title\\\",\\\"app.containers.Calendar.update_event\\\":\\\"Update Event\\\"}\");\n\n//# sourceURL=webpack://calendar/./src/translations/en.json?");
+eval("module.exports = JSON.parse(\"{\\\"app.containers.Calendar.add_event\\\":\\\"Add Event\\\",\\\"app.containers.Calendar.delete\\\":\\\"Delete\\\",\\\"app.containers.Calendar.end\\\":\\\"End\\\",\\\"app.containers.Calendar.header\\\":\\\"Calendar\\\",\\\"app.containers.Calendar.note\\\":\\\"Note\\\",\\\"app.containers.Calendar.nothing_today\\\":\\\"Nothing Today\\\",\\\"app.containers.Calendar.place\\\":\\\"Place\\\",\\\"app.containers.Calendar.send\\\":\\\"Send\\\",\\\"app.containers.Calendar.start\\\":\\\"Start\\\",\\\"app.containers.Calendar.title\\\":\\\"Title\\\",\\\"app.containers.Calendar.update_event\\\":\\\"Update Event\\\"}\");\n\n//# sourceURL=webpack://calendar/./src/translations/en.json?");
 
 /***/ }),
 
@@ -62,19 +63,20 @@ eval("module.exports = JSON.parse(\"{\\\"app.containers.Calendar.add_event\\\":\
 /*! export app.containers.Calendar.end [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
 /*! export app.containers.Calendar.header [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
 /*! export app.containers.Calendar.note [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
+/*! export app.containers.Calendar.nothing_today [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
 /*! export app.containers.Calendar.place [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
 /*! export app.containers.Calendar.send [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
 /*! export app.containers.Calendar.start [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
 /*! export app.containers.Calendar.title [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
 /*! export app.containers.Calendar.update_event [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
 /*! export default [provided] [maybe used (runtime-defined)] [no name, virtual] */
-/*!   ... (11 already listed exports) */
+/*!   ... (12 already listed exports) */
 /*! other exports [not provided] [maybe used (runtime-defined)] */
 /*! runtime requirements: module */
 /***/ ((module) => {
 
 "use strict";
-eval("module.exports = JSON.parse(\"{\\\"app.containers.Calendar.add_event\\\":\\\"Ajouter un évenement\\\",\\\"app.containers.Calendar.delete\\\":\\\"Supprimer\\\",\\\"app.containers.Calendar.end\\\":\\\"Fin\\\",\\\"app.containers.Calendar.header\\\":\\\"Calendrier\\\",\\\"app.containers.Calendar.note\\\":\\\"Note\\\",\\\"app.containers.Calendar.place\\\":\\\"Lieu\\\",\\\"app.containers.Calendar.send\\\":\\\"Envoyer\\\",\\\"app.containers.Calendar.start\\\":\\\"Début\\\",\\\"app.containers.Calendar.title\\\":\\\"Titre\\\",\\\"app.containers.Calendar.update_event\\\":\\\"Modifier un évenement\\\"}\");\n\n//# sourceURL=webpack://calendar/./src/translations/fr.json?");
+eval("module.exports = JSON.parse(\"{\\\"app.containers.Calendar.add_event\\\":\\\"Ajouter un évenement\\\",\\\"app.containers.Calendar.delete\\\":\\\"Supprimer\\\",\\\"app.containers.Calendar.end\\\":\\\"Fin\\\",\\\"app.containers.Calendar.header\\\":\\\"Calendrier\\\",\\\"app.containers.Calendar.note\\\":\\\"Note\\\",\\\"app.containers.Calendar.nothing_today\\\":\\\"Rien Aujourd'hui\\\",\\\"app.containers.Calendar.place\\\":\\\"Lieu\\\",\\\"app.containers.Calendar.send\\\":\\\"Envoyer\\\",\\\"app.containers.Calendar.start\\\":\\\"Début\\\",\\\"app.containers.Calendar.title\\\":\\\"Titre\\\",\\\"app.containers.Calendar.update_event\\\":\\\"Modifier un évenement\\\"}\");\n\n//# sourceURL=webpack://calendar/./src/translations/fr.json?");
 
 /***/ })
 

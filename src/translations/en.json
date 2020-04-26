@@ -4,6 +4,7 @@
   "app.containers.Calendar.end": "End",
   "app.containers.Calendar.header": "Calendar",
   "app.containers.Calendar.note": "Note",
+  "app.containers.Calendar.nothing_today": "Nothing Today",
   "app.containers.Calendar.place": "Place",
   "app.containers.Calendar.send": "Send",
   "app.containers.Calendar.start": "Start",

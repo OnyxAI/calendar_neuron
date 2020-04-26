@@ -41,13 +41,12 @@ eval("\nmodule.exports = function () {\n\treturn /[\\u001b\\u009b][[()#;?]*(?:[0
 /*!**********************!*\
   !*** ./bootstrap.js ***!
   \**********************/
-/*! namespace exports */
-/*! exports [not provided] [unused] */
-/*! runtime requirements: __webpack_require__, __webpack_require__.n, __webpack_require__.e, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
+/*! unknown exports (runtime-defined) */
+/*! exports [maybe provided (runtime-defined)] [unused] */
+/*! runtime requirements: __webpack_require__.e, __webpack_require__, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-eval("/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"?9a3c\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nPromise.all(/*! import() */[__webpack_require__.e(\"vendors-node_modules_react-big-calendar_dist_react-big-calendar_esm_js-node_modules_react-big-230917\"), __webpack_require__.e(\"index_js-node_modules_moment_locale_sync_recursive_-\")]).then(__webpack_require__.bind(__webpack_require__, /*! ./index.js */ \"./index.js\"));\n\n//# sourceURL=webpack://calendar/./bootstrap.js?");
+eval("Promise.all(/*! import() */[__webpack_require__.e(\"vendors-node_modules_react-big-calendar_dist_react-big-calendar_esm_js-node_modules_react-big-180b66\"), __webpack_require__.e(\"src_containers_Calendar_index_js-node_modules_moment_locale_sync_recursive_-\"), __webpack_require__.e(\"index_js\")]).then(__webpack_require__.bind(__webpack_require__, /*! ./index */ \"./index.js\"));\n\n//# sourceURL=webpack://calendar/./bootstrap.js?");
 
 /***/ }),
 
@@ -609,12 +608,13 @@ eval("var external = __webpack_require__(\"container-reference/onyx\");\nexterna
 /******/ 	(() => {
 /******/ 		__webpack_require__.O = {};
 /******/ 		var chunkMapping = {
-/******/ 			"index_js-node_modules_moment_locale_sync_recursive_-": [
+/******/ 			"src_containers_Calendar_index_js-node_modules_moment_locale_sync_recursive_-": [
 /******/ 				"?f292",
 /******/ 				"?06d7",
 /******/ 				"?244e",
 /******/ 				"?58b7",
 /******/ 				"?1277",
+/******/ 				"?9a3c",
 /******/ 				"?3edc",
 /******/ 				"?fdf0"
 /******/ 			]
@@ -625,6 +625,7 @@ eval("var external = __webpack_require__(\"container-reference/onyx\");\nexterna
 /******/ 			"?244e": "react-intl",
 /******/ 			"?58b7": "react-materialize",
 /******/ 			"?1277": "react-redux",
+/******/ 			"?9a3c": "react",
 /******/ 			"?3edc": "redux",
 /******/ 			"?fdf0": "reselect"
 /******/ 		};
@@ -643,6 +644,9 @@ eval("var external = __webpack_require__(\"container-reference/onyx\");\nexterna
 /******/ 			},
 /******/ 			"?1277": () => {
 /******/ 				return Promise.all([__webpack_require__.e("vendors-node_modules_react-dom_index_js-_ee79"), __webpack_require__.e("vendors-node_modules_react-redux_es_index_js")]).then(() => () => __webpack_require__("../../node_modules/react-redux/es/index.js"))
+/******/ 			},
+/******/ 			"?9a3c": () => {
+/******/ 				return __webpack_require__.e("vendors-node_modules_react_index_js").then(() => () => __webpack_require__("./node_modules/react/index.js"))
 /******/ 			},
 /******/ 			"?3edc": () => {
 /******/ 				return __webpack_require__.e("vendors-node_modules_redux_es_redux_js").then(() => () => __webpack_require__("../../node_modules/redux/es/redux.js"))
@@ -667,17 +671,22 @@ eval("var external = __webpack_require__(\"container-reference/onyx\");\nexterna
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
-/******/ 		__webpack_require__.p = "/neurons/calendar/";
+/******/ 		__webpack_require__.p = "/api/neurons/serve/calendar/";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/remotes loading */
 /******/ 	(() => {
 /******/ 		var chunkMapping = {
-/******/ 			"index_js-node_modules_moment_locale_sync_recursive_-": [
+/******/ 			"src_containers_Calendar_index_js-node_modules_moment_locale_sync_recursive_-": [
+/******/ 				"?3158",
 /******/ 				"?1509"
 /******/ 			]
 /******/ 		};
 /******/ 		var idToExternalAndNameMapping = {
+/******/ 			"?3158": [
+/******/ 				"?599b",
+/******/ 				"components"
+/******/ 			],
 /******/ 			"?1509": [
 /******/ 				"?599b",
 /******/ 				"utils"
