@@ -110,7 +110,6 @@ export function CalendarWidgetComponent({
   changeStartFunc,
   changeTitleFunc,
   changePlaceFunc,
-  deleteWidget,
 }) {
   useInjectReducer({ key: 'calendar', reducer });
   useInjectSaga({ key: 'calendar', saga });
@@ -121,67 +120,59 @@ export function CalendarWidgetComponent({
 
   return (
     <div>
-      <Widget delete={() => deleteWidget()} title={<FormattedMessage {...messages.header} />}>
-        <CalendarComponent
-          calendar={calendar}
-          events={events}
-          user={user}
-          widget
-          addEventFunc={addEventFunc}
-          deleteEventFunc={deleteEventFunc}
-          updateEventFunc={updateEventFunc}
-          updateDateEventFunc={updateDateEventFunc}
-          changeStartFunc={changeStartFunc}
-          changeEndFunc={changeEndFunc}
-          changeIdFunc={changeIdFunc}
-          changeColorFunc={changeColorFunc}
-          changeNoteFunc={changeNoteFunc}
-          changeTitleFunc={changeTitleFunc}
-          changePlaceFunc={changePlaceFunc}
-        />
-      </Widget>
+      <CalendarComponent
+        calendar={calendar}
+        events={events}
+        user={user}
+        widget
+        addEventFunc={addEventFunc}
+        deleteEventFunc={deleteEventFunc}
+        updateEventFunc={updateEventFunc}
+        updateDateEventFunc={updateDateEventFunc}
+        changeStartFunc={changeStartFunc}
+        changeEndFunc={changeEndFunc}
+        changeIdFunc={changeIdFunc}
+        changeColorFunc={changeColorFunc}
+        changeNoteFunc={changeNoteFunc}
+        changeTitleFunc={changeTitleFunc}
+        changePlaceFunc={changePlaceFunc}
+      />
     </div>
   );
 }
 
-export function TodayWidgetComponent({ deleteWidget, getTodayEventsFunc, calendar, events }){
+export function TodayWidgetComponent({
+  getTodayEventsFunc,
+  calendar,
+  events,
+}) {
   useInjectReducer({ key: 'calendar', reducer });
   useInjectSaga({ key: 'calendar', saga });
 
   useEffect(() => {
     getTodayEventsFunc();
-  }, [0])
+  }, [0]);
 
   return (
     <div>
       {calendar && calendar.todayEvents.length !== 0 ? (
-        <Widget
-          title={<FormattedMessage {...messages.header} />}
-          delete={() => deleteWidget()}
-        >
           <ul className="uk-list uk-list-bullet">
             {calendar.todayEvents.map(event => (
               <li>{event.title}</li>
             ))}
           </ul>
-        </Widget>
       ) : (
-        <Widget
-          title={<FormattedMessage {...messages.header} />}
-          delete={() => deleteWidget()}
-        >
           <p>{<FormattedMessage {...messages.nothing_today} />}</p>
-        </Widget>
       )}
     </div>
-  )
+  );
 }
 
 TodayWidgetComponent.propTypes = {
   calendar: PropTypes.object,
   deleteWidget: PropTypes.func,
   getTodayEventsFunc: PropTypes.func,
-}
+};
 
 Calendar.propTypes = {
   user: PropTypes.object,
@@ -301,7 +292,6 @@ export const CalendarWidget = compose(
   withConnect,
   memo,
 )(CalendarWidgetComponent);
-
 
 export const TodayWidget = compose(
   withConnect,
