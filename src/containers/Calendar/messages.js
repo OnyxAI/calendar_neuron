@@ -49,6 +49,10 @@ export default defineMessages({
     id: `${scope}.update_event`,
     defaultMessage: 'Update Event',
   },
+  today: {
+    id: `${scope}.today`,
+    defaultMessage: 'Today',
+  },
   nothing_today: {
     id: `${scope}.nothing_today`,
     defaultMessage: 'Nothing Today',

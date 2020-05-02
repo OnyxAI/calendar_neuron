@@ -110,6 +110,7 @@ export function CalendarWidgetComponent({
   changeStartFunc,
   changeTitleFunc,
   changePlaceFunc,
+  ...props
 }) {
   useInjectReducer({ key: 'calendar', reducer });
   useInjectSaga({ key: 'calendar', saga });
@@ -119,7 +120,7 @@ export function CalendarWidgetComponent({
   }, [0]);
 
   return (
-    <div>
+    <Widget className='uk-card uk-card-default uk-card-body' style={props.style}>
       <CalendarComponent
         calendar={calendar}
         events={events}
@@ -137,7 +138,7 @@ export function CalendarWidgetComponent({
         changeTitleFunc={changeTitleFunc}
         changePlaceFunc={changePlaceFunc}
       />
-    </div>
+    </Widget>
   );
 }
 
@@ -145,6 +146,7 @@ export function TodayWidgetComponent({
   getTodayEventsFunc,
   calendar,
   events,
+  ...props
 }) {
   useInjectReducer({ key: 'calendar', reducer });
   useInjectSaga({ key: 'calendar', saga });
@@ -154,17 +156,23 @@ export function TodayWidgetComponent({
   }, [0]);
 
   return (
-    <div>
+    <Widget className='uk-card uk-card-default' style={props.style}>
       {calendar && calendar.todayEvents.length !== 0 ? (
+        <div>
+          <h5 className="center uk-card-header">{<FormattedMessage {...messages.today} />}</h5>
           <ul className="uk-list uk-list-bullet">
             {calendar.todayEvents.map(event => (
               <li>{event.title}</li>
             ))}
           </ul>
+        </div>
       ) : (
-          <p>{<FormattedMessage {...messages.nothing_today} />}</p>
+        <div>
+          <h5 className="center uk-card-header">{<FormattedMessage {...messages.today} />}</h5>
+          <p className="center">{<FormattedMessage {...messages.nothing_today} />}</p>
+        </div>
       )}
-    </div>
+    </Widget>
   );
 }
 
